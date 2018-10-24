@@ -163,6 +163,7 @@ return [
         /*
          * Package Service Providers...
          */
+        \BVAccel\DatabaseQueueDashboard\DatabaseQueueDashboardServiceProvider::class,
 
         /*
          * Application Service Providers...
