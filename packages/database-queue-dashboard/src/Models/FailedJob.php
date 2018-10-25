@@ -5,6 +5,7 @@ namespace BVAccel\DatabaseQueueDashboard\Models;
 
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class FailedJob extends Model
@@ -24,5 +25,15 @@ class FailedJob extends Model
     public function getTable()
     {
         return config('db-queue-dashboard.failed_jobs_table');
+    }
+
+    /**
+     * @param Builder $query
+     * @param string $queue
+     * @return Builder
+     */
+    public function scopeQueue(Builder $query, string $queue)
+    {
+        return $query->where('queue', $queue);
     }
 }
