@@ -10,13 +10,14 @@
                             </p>
                         </div>
                         <div class="level-item level-right">
-                            <form>
-                                <div class="field">
+                            <form @submit.prevent="runSearch" class="mr-sm">
+                                <div class="field is-horizontal">
                                     <div class="control">
-                                        <input type="text" class="input is-primary" placeholder="Filter by queue">
+                                        <input type="text" v-model="search.queue" class="input is-primary" placeholder="Filter by queue">
                                     </div>
                                 </div>
                             </form>
+                            <button @click="runSearch" class="button is-primary">Search</button>
                         </div>
                     </nav>
                 </header>
@@ -31,7 +32,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="job in failed_jobs" class="clickable" v-on:click="goToJob(job.id)">
+                        <tr v-for="job in failed_jobs" class="clickable" @click="goToJob(job.id)">
                             <td>{{ job.id }}</td>
                             <td>{{ job.payload.displayName }}</td>
                             <td>{{ job.queue }}</td>
@@ -42,7 +43,7 @@
                     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
                         <ul class="pagination-list">
                             <li v-for="page in pagination.window">
-                                <a class="pagination-link" :class="{'is-current': page.current}" v-on:click="getPage(page.page)">
+                                <a class="pagination-link" :class="{'is-current': page.current}" v-on:click="getPageResults(page.page)">
                                     {{ page.page }}
                                 </a>
                             </li>
@@ -65,45 +66,33 @@
                 pagination: {
                     window: []
                 },
-                queue: ''
+                search: {
+                    queue: '',
+                    page: null
+                }
             }
         },
         created() {
-            this.getFailedJobs();
+            this.runSearch();
         },
         methods: {
-            getPage(page = 0) {
-                const queue = this.queue;
-                let search = {
-                    page,
-                    queue
-                };
+            runSearch() {
+                this.search.page = 1;
+                
+                this.getFailedJobs(this.search);
+            },
+            getPageResults(page = 0) {
+                this.search.page = page;
 
-                this.getFailedJobs(search);
+                this.getFailedJobs(this.search);
             },
             getFailedJobs(params = {}) {
-                console.log(params);
-                let url = "/api/failed-jobs";
-                let parameters = [];
-
-                for(let k in params) {
-                    if(!params.hasOwnProperty(k)) {
-                        continue;
-                    }
-
-                    if(!params[k]) {
-                        continue;
-                    }
-
-                    if(k === 'queue') {
-                        k = 'filter[queue]';
-                    }
-                    parameters.push(`${k}=${params[k]}`);
+                if(this.http.failed_jobs) {
+                    return;
                 }
 
-                url += '?' + parameters.join('&');
+                let url = "/api/failed-jobs" + '?' + this.buildQueryString(params);
                 console.log(url);
-
                 this.http.failed_jobs = true;
 
                 this.$http.get(url).then(res => {
@@ -136,6 +125,28 @@
                         current: (current === i)
                     });
                 }
+            },
+            buildQueryString(params = {}) {
+                let parameters = [];
+                for(let k in params) {
+                    if(!params.hasOwnProperty(k)) {
+                        continue;
+                    }
+
+                    if(!params[k]) {
+                        continue;
+                    }
+
+                    const value = params[k];
+
+                    if(k === 'queue') {
+                        k = 'filter[queue]';
+                    }
+
+                    parameters.push(`${k}=${value}`);
+                }
+
+                return parameters.join('&');
             }
         }
     }

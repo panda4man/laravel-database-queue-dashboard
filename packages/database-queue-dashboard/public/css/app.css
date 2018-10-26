@@ -15,6 +15,18 @@ body {
   margin-bottom: 30px;
 }
 
+.mr-sm {
+  margin-right: 10px;
+}
+
+.mr-md {
+  margin-right: 20px;
+}
+
+.mr-lg {
+  margin-right: 30px;
+}
+
 .job-exception,
 .job-payload {
   max-height: 500px;
@@ -28,6 +40,10 @@ body {
 
 .table thead {
   background-color: #f5f2f2;
+}
+
+.table tbody tr td {
+  padding: 1em 0.75em;
 }
 
 nav.pagination {

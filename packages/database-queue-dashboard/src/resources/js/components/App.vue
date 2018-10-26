@@ -5,8 +5,17 @@
                 <div class="column is-full-mobile is-4-tablet is-2-desktop">
                     <aside class="menu">
                         <ul class="menu-list">
-                            <li><router-link :to="{ name: 'dashboard' }">Overview</router-link></li>
-                            <li><router-link :to="{ name: 'failed-jobs' }">Failed Jobs</router-link></li>
+                            <li>
+                                <router-link :to="{ name: 'dashboard' }">
+                                    <font-awesome-icon icon="chart-bar"></font-awesome-icon>&nbsp;&nbsp;Overview
+                                </router-link>
+                            </li>
+                            <li>
+
+                                <router-link :to="{ name: 'failed-jobs' }">
+                                    <font-awesome-icon icon="th-list"></font-awesome-icon>&nbsp;&nbsp;Failed Jobs
+                                </router-link>
+                            </li>
                         </ul>
                     </aside>
                 </div>

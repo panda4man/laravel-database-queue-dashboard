@@ -4,7 +4,14 @@ import router from './router';
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 import Axios from 'axios';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChartBar, faThList, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import 'bulma/css/bulma.css';
+
+library.add(faChartBar, faThList, faSpinner);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.prototype.$Echo = new Echo({
     broadcaster:'pusher',
