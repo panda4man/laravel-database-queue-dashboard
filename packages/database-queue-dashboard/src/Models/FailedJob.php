@@ -16,7 +16,7 @@ class FailedJob extends Model
      */
     public function getFailedAtAttribute($failed_at)
     {
-        return $failed_at ? Carbon::createFromTimestamp($failed_at) : null;
+        return $failed_at ? Carbon::createFromFormat('Y-m-d H:i:s', $failed_at, 'UTC') : null;
     }
 
     /**

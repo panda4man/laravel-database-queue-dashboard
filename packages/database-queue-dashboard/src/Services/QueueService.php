@@ -41,7 +41,11 @@ class QueueService
         }
 
         foreach ($failed_jobs as $job) {
-            $queues[$job->queue] = ['failed_jobs' => $job->count];
+            if(isset($queues[$job->queue])) {
+                $queues[$job->queue]['failed_jobs'] = $job->count;
+            } else {
+                $queues[$job->queue] = ['failed_jobs' => $job->count];
+            }
         }
 
         $data = [];

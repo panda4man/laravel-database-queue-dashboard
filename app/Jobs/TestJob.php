@@ -12,6 +12,13 @@ class TestJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    public $fail;
+
+    public function __construct(bool $fail = false)
+    {
+        $this->fail = $fail;
+    }
+
     /**
      * Execute the job.
      *
@@ -19,6 +26,11 @@ class TestJob implements ShouldQueue
      */
     public function handle()
     {
-        print("handled\n");
+        if($this->fail) {
+            $this->fail();
+            return;
+        }
+
+        print("Handled\n");
     }
 }

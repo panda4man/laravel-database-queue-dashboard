@@ -4,6 +4,7 @@ import router from './router';
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 import Axios from 'axios';
+import 'bulma/css/bulma.css';
 
 Vue.prototype.$Echo = new Echo({
     broadcaster:'pusher',

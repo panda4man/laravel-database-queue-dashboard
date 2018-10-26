@@ -13,6 +13,13 @@
     </script>
 </head>
 <body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a href="{{route('db-queues-dashboard')}}" class="navbar-item">Queues Dashboard</a>
+            </div>
+        </div>
+    </nav>
     <div id="app">
         <database-queue-dashboard></database-queue-dashboard>
     </div>

@@ -8,6 +8,6 @@ Route::group(
     ],
     function () {
         Route::apiResource('jobs', 'JobsController')->only('index');
-        Route::apiResource('failed-jobs', 'FailedJobsController')->only('index');
+        Route::apiResource('failed-jobs', 'FailedJobsController')->only(['index', 'show']);
         Route::apiResource('queues', 'QueuesController')->only('index');
 });

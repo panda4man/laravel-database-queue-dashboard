@@ -1,17 +1,21 @@
 <template>
-    <div>
-        <h1>Database Queues</h1>
-        <div class="sidebar">
-            <ul>
-                <li><router-link :to="{ name: 'dashboard' }">Overview</router-link></li>
-                <li><router-link :to="{ name: 'jobs' }">Jobs</router-link></li>
-                <li><router-link :to="{ name: 'failed-jobs' }">Failed Jobs</router-link></li>
-            </ul>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-full-mobile is-4-tablet is-2-desktop">
+                    <aside class="menu">
+                        <ul class="menu-list">
+                            <li><router-link :to="{ name: 'dashboard' }">Overview</router-link></li>
+                            <li><router-link :to="{ name: 'failed-jobs' }">Failed Jobs</router-link></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="column">
+                    <router-view></router-view>
+                </div>
+            </div>
         </div>
-        <div class="content">
-            <router-view></router-view>
-        </div>
-    </div>
+    </section>
 </template>
 
 <script>

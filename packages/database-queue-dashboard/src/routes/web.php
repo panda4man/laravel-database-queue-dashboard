@@ -6,6 +6,8 @@ Route::group(
         'middleware' => ['web']
     ],
     function () {
-        Route::resource('queues-dashboard', 'DashboardController')->only('index');
+        Route::resource('queues-dashboard', 'DashboardController')->only('index')->names([
+            'index' => 'db-queues-dashboard'
+        ]);
     }
 );

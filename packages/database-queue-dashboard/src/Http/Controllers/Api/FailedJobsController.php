@@ -4,7 +4,8 @@
 namespace BVAccel\DatabaseQueueDashboard\Http\Controllers\Api;
 
 
-use BVAccel\DatabaseQueueDashboard\Http\Resources\FailedJobResource;
+use BVAccel\DatabaseQueueDashboard\Http\Resources\FailedJobCollection;
+use BVAccel\DatabaseQueueDashboard\Http\Resources\FailedJob as FailedJobResource;
 use BVAccel\DatabaseQueueDashboard\Models\FailedJob;
 use Illuminate\Routing\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -12,14 +13,24 @@ use Spatie\QueryBuilder\QueryBuilder;
 class FailedJobsController extends Controller
 {
     /**
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return FailedJobCollection
      */
     public function index()
     {
         $query = QueryBuilder::for(FailedJob::class)
             ->allowedFilters(['queue'])
-            ->get();
+            ->orderBy('failed_at', 'desc')
+            ->paginate(20);
 
-        return FailedJobResource::collection($query);
+        return new FailedJobCollection($query);
+    }
+
+    /**
+     * @param FailedJob $job
+     * @return FailedJobResource
+     */
+    public function show(FailedJob $job)
+    {
+        return FailedJobResource::make($job);
     }
 }

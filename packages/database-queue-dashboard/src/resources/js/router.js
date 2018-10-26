@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Dashboard from './components/Dashboard.vue';
-import Jobs from './components/Jobs.vue';
 import FailedJobs from './components/FailedJobs.vue';
+import FailedJob from './components/FailedJob.vue';
 
 Vue.use(VueRouter);
 
@@ -14,14 +14,14 @@ const router = new VueRouter({
             component: Dashboard
         },
         {
-            path: '/jobs',
-            name: 'jobs',
-            component: Jobs
-        },
-        {
             path: '/failed-jobs',
             name: 'failed-jobs',
             component: FailedJobs
+        },
+        {
+            path: '/failed-jobs/:id',
+            name: 'failed-job',
+            component: FailedJob
         }
     ]
 });

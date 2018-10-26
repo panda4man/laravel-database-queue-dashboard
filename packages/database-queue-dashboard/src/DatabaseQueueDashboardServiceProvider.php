@@ -4,10 +4,8 @@
 namespace BVAccel\DatabaseQueueDashboard;
 
 
-use BVAccel\DatabaseQueueDashboard\Events\QueueCacheUpdated;
-use Illuminate\Contracts\Cache\Repository;
-use Illuminate\Queue\Events\JobProcessed;
-use Illuminate\Support\Facades\Queue;
+use BVAccel\DatabaseQueueDashboard\Models\FailedJob;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class DatabaseQueueDashboardServiceProvider extends ServiceProvider
@@ -19,9 +17,10 @@ class DatabaseQueueDashboardServiceProvider extends ServiceProvider
     {
         $this->_loadConfig();
         $this->_loadRoutes();
-        $this->_handleQueues();
         $this->_loadViews();
         $this->_publishAssets();
+
+        Route::model('failed_job', FailedJob::class);
     }
 
     /**
@@ -31,29 +30,6 @@ class DatabaseQueueDashboardServiceProvider extends ServiceProvider
     {
         $configPath = __DIR__ . '/config/db-queue-dashboard.php';
         $this->mergeConfigFrom($configPath, 'db-queue-dashboard');
-    }
-
-    private function _handleQueues(): void
-    {
-        Queue::after(function (JobProcessed $job) {
-            $queue = $job->job->getQueue();
-            /** @var Repository $cache */
-            $cache = \Cache::driver('redis');
-            $hits = 0;
-
-            if($cache->has($queue)) {
-                $hits = $cache->get($queue);
-            }
-
-            if($hits < 5) {
-                $hits++;
-            } else {
-                $hits = 0;
-                event((new QueueCacheUpdated($queue))->onConnection('redis')->onQueue('db-queue-cache'));
-            }
-
-            $cache->put($queue, $hits, 10);
-        });
     }
 
     /**

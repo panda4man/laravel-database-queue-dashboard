@@ -11,8 +11,15 @@ class DashboardController extends Controller
     public function index()
     {
         \Artisan::call('vendor:publish', [
-            '--tag' => 'public',
-            '--force' => 1
+            '--provider' => 'BVAccel\DatabaseQueueDashboard\DatabaseQueueDashboardServiceProvider',
+            '--tag'      => 'public',
+            '--force'    => 1
+        ]);
+
+        \Artisan::call('vendor:publish', [
+            '--provider' => 'BVAccel\DatabaseQueueDashboard\DatabaseQueueDashboardServiceProvider',
+            '--tag'      => 'view',
+            '--force'    => 1
         ]);
 
         return view('db_queue::dashboard');
