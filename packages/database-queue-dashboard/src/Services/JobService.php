@@ -5,6 +5,7 @@ namespace BVAccel\DatabaseQueueDashboard\Services;
 
 
 use BVAccel\DatabaseQueueDashboard\Models\FailedJob;
+use Illuminate\Database\Eloquent\Builder;
 
 class JobService
 {
@@ -16,7 +17,15 @@ class JobService
     {
         $now = now();
         $hour_ago = now()->subHour();
+        /** @var Builder $query */
+        $query = FailedJob::whereBetween('failed_at', [$hour_ago, $now]);
 
-        return FailedJob::whereBetween('failed_at', [$hour_ago, $now])->count();
+        if(!empty($query)) {
+            $query->whereQueue($queue);
+        }
+
+        $count = $query->count();
+
+        return $count;
     }
 }

@@ -5,6 +5,8 @@ namespace BVAccel\DatabaseQueueDashboard;
 
 
 use BVAccel\DatabaseQueueDashboard\Models\FailedJob;
+use BVAccel\DatabaseQueueDashboard\Services\JobService;
+use BVAccel\DatabaseQueueDashboard\Services\QueueService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +32,14 @@ class DatabaseQueueDashboardServiceProvider extends ServiceProvider
     {
         $configPath = __DIR__ . '/config/db-queue-dashboard.php';
         $this->mergeConfigFrom($configPath, 'db-queue-dashboard');
+
+        $this->app->singleton(JobService::class, function () {
+            return new JobService();
+        });
+
+        $this->app->singleton(QueueService::class, function () {
+            return new QueueService();
+        });
     }
 
     /**

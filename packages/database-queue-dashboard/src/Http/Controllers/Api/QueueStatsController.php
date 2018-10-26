@@ -7,11 +7,10 @@ namespace BVAccel\DatabaseQueueDashboard\Http\Controllers\Api;
 use BVAccel\DatabaseQueueDashboard\Services\QueueService;
 use Illuminate\Routing\Controller;
 
-class QueuesController extends Controller
+class QueueStatsController extends Controller
 {
-    public function index()
+    public function index(QueueService $service)
     {
-        $service = new QueueService();
         $data    = $service->perQueueStats();
 
         return response()->json(['data' => $data]);

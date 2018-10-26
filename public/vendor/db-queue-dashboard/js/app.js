@@ -33646,6 +33646,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.getFailedJobStats();
         }, 7 * 1000);
     },
+    beforeDestroy: function beforeDestroy() {
+        clearInterval(this.interval);
+    },
 
     methods: {
         getInitialStateData: function getInitialStateData() {
@@ -33657,7 +33660,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.http.queue_stats = true;
 
-            this.$http.get('/api/queues').then(function (res) {
+            this.$http.get('/api/queue-stats').then(function (res) {
                 _this2.queues = res.data.data;
             }).catch(function (res) {
                 console.log(res);

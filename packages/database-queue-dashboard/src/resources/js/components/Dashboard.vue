@@ -92,6 +92,9 @@
                 this.getFailedJobStats();
             }, 7 * 1000);
         },
+        beforeDestroy() {
+            clearInterval(this.interval);
+        },
         methods: {
             getInitialStateData() {
                 this.getQueues();
@@ -100,7 +103,7 @@
             getQueues() {
                 this.http.queue_stats = true;
 
-                this.$http.get('/api/queues').then(res => {
+                this.$http.get('/api/queue-stats').then(res => {
                     this.queues = res.data.data;
                 }).catch(res => {
                     console.log(res);
