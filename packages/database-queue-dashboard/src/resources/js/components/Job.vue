@@ -2,7 +2,7 @@
     <div>
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
-                <li><a @click="$router.go(-1)">Failed Jobs</a></li>
+                <li><a @click="$router.go(-1)">Jobs</a></li>
                 <li class="is-active"><a href="#" aria-current="page">Details</a></li>
             </ul>
         </nav>
@@ -11,7 +11,7 @@
                 <div class="card">
                     <template v-if="http.job">
                         <div class="notification is-primary">
-                            Fetching the data for this failed job...
+                            Fetching the data for this job...
                         </div>
                     </template>
                     <template v-else>
@@ -43,23 +43,15 @@
                                     </div>
                                     <div class="level-item has-text-centered">
                                         <div>
-                                            <div class="header">Failed At</div>
-                                            <div class="title">{{ job.failed_at }}</div>
+                                            <div class="header">Created At</div>
+                                            <div class="title">{{ job.created_at }}</div>
                                         </div>
                                     </div>
                                 </nav>
                                 <hr>
                                 <div class="columns">
                                     <div class="column">
-                                        <div class="job-exception">
-                                            <pre>{{ job.exception }}</pre>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="columns">
-                                    <div class="column">
-                                        <div class="job-exception">
+                                        <div class="job-payload">
                                             <pre>{{ job.payload }}</pre>
                                         </div>
                                     </div>
@@ -77,11 +69,11 @@
     export default {
         data() {
             return {
-                job: null,
                 job_id: null,
                 http: {
                     job: false
                 },
+                job: null,
                 errors: {
                     job: null
                 }
@@ -99,7 +91,7 @@
                 this.http.job = true;
                 this.errors.job = null;
 
-                this.$http.get(`/api/failed-jobs/${id}`).then(res => {
+                this.$http.get(`/api/jobs/${id}`).then(res => {
                     this.job = res.data.data;
                 }).catch(res => {
                     if(res.response) {

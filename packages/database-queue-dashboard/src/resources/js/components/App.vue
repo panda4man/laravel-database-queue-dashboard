@@ -6,13 +6,18 @@
                     <aside class="menu">
                         <ul class="menu-list">
                             <li>
-                                <router-link :to="{ name: 'dashboard' }">
+                                <router-link active-class="is-active" :to="{ name: 'dashboard' }" exact>
                                     <font-awesome-icon icon="chart-bar"></font-awesome-icon>&nbsp;&nbsp;Overview
                                 </router-link>
                             </li>
                             <li>
+                                <router-link active-class="is-active" :to="{ name: 'jobs' }">
+                                    <font-awesome-icon icon="clock"></font-awesome-icon>&nbsp;&nbsp;Recent Jobs
+                                </router-link>
+                            </li>
+                            <li>
 
-                                <router-link :to="{ name: 'failed-jobs' }">
+                                <router-link active-class="is-active" :to="{ name: 'failed-jobs' }">
                                     <font-awesome-icon icon="th-list"></font-awesome-icon>&nbsp;&nbsp;Failed Jobs
                                 </router-link>
                             </li>

@@ -24,7 +24,7 @@ class FailedJob extends Model
      */
     public function getTable()
     {
-        return config('db-queue-dashboard.failed_jobs_table');
+        return config('queue.failed.table');
     }
 
     /**

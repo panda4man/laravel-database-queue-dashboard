@@ -15,12 +15,12 @@ class JobService
      */
     public function failedInLastHour(?string $queue = null)
     {
-        $now = now();
+        $now      = now();
         $hour_ago = now()->subHour();
         /** @var Builder $query */
         $query = FailedJob::whereBetween('failed_at', [$hour_ago, $now]);
 
-        if(!empty($query)) {
+        if (!empty($query)) {
             $query->whereQueue($queue);
         }
 

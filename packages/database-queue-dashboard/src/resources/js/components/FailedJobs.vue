@@ -17,7 +17,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <button @click="runSearch" class="button is-primary">Search</button>
+                            <button @click="runSearch" :class="{'is-loading': http.failed_jobs}" class="button is-primary">Search</button>
                         </div>
                     </nav>
                 </header>
@@ -78,7 +78,7 @@
         methods: {
             runSearch() {
                 this.search.page = 1;
-                
+
                 this.getFailedJobs(this.search);
             },
             getPageResults(page = 0) {

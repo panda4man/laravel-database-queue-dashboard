@@ -5,6 +5,7 @@ namespace BVAccel\DatabaseQueueDashboard;
 
 
 use BVAccel\DatabaseQueueDashboard\Models\FailedJob;
+use BVAccel\DatabaseQueueDashboard\Models\Job;
 use BVAccel\DatabaseQueueDashboard\Services\JobService;
 use BVAccel\DatabaseQueueDashboard\Services\QueueService;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ class DatabaseQueueDashboardServiceProvider extends ServiceProvider
         $this->_publishAssets();
 
         Route::model('failed_job', FailedJob::class);
+        Route::model('job', Job::class);
     }
 
     /**

@@ -54,3 +54,7 @@ nav.pagination {
   cursor: pointer;
 }
 
+.card-header-title {
+  padding: 1rem;
+}
+
