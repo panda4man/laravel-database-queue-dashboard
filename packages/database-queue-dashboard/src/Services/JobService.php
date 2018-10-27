@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BVAccel\DatabaseQueueDashboard\Services;
+namespace BVAccel\LaravelDatabaseQueueDashboard\Services;
 
 
-use BVAccel\DatabaseQueueDashboard\Models\FailedJob;
+use BVAccel\LaravelDatabaseQueueDashboard\Models\FailedJob;
 use Illuminate\Database\Eloquent\Builder;
 
 class JobService

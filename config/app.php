@@ -163,7 +163,7 @@ return [
         /*
          * Package Service Providers...
          */
-        \BVAccel\DatabaseQueueDashboard\DatabaseQueueDashboardServiceProvider::class,
+        \BVAccel\LaravelDatabaseQueueDashboard\LaravelDatabaseQueueDashboardServiceProvider::class,
 
         /*
          * Application Service Providers...

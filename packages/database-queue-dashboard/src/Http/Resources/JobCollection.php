@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BVAccel\DatabaseQueueDashboard\Http\Resources;
+namespace BVAccel\LaravelDatabaseQueueDashboard\Http\Resources;
 
 
 use Illuminate\Http\Resources\Json\ResourceCollection;

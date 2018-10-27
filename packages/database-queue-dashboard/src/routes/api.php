@@ -3,7 +3,7 @@
 Route::group(
     [
         'prefix' => 'api',
-        'namespace' => 'BVAccel\DatabaseQueueDashboard\Http\Controllers\Api',
+        'namespace' => 'BVAccel\LaravelDatabaseQueueDashboard\Http\Controllers\Api',
         'middleware' => ['api']
     ],
     function () {

@@ -34,6 +34,6 @@
 
 <script>
     export default {
-        name: 'DatabaseQueueDashboard'
+        name: 'LaravelDatabaseQueueDashboard'
     }
 </script>

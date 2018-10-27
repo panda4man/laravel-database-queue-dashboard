@@ -12216,7 +12216,7 @@ function getAttrConfig(attr) {
 function coerce(val) {
   // Getting an empty string will occur if the attribute is set on the HTML tag but without a value
   // We'll assume that this is an indication that it should be toggled to true
-  // For example <script data-search-pseudo-elements src="..."></script>
+  // For example <script data-search-pseudo-elements LaravelDatabaseQueueDashboard="..."></script>
   if (val === '') return true;
   if (val === 'false') return false;
   if (val === 'true') return true;
@@ -14338,7 +14338,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "src/resources/js/components/App.vue"
+Component.options.__file = "LaravelDatabaseQueueDashboard/resources/js/components/App.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14401,7 +14401,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'DatabaseQueueDashboard'
+    name: 'LaravelDatabaseQueueDashboard'
 });
 
 /***/ }),
@@ -17216,7 +17216,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "src/resources/js/components/Dashboard.vue"
+Component.options.__file = "LaravelDatabaseQueueDashboard/resources/js/components/Dashboard.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -17582,7 +17582,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "src/resources/js/components/FailedJobs.vue"
+Component.options.__file = "LaravelDatabaseQueueDashboard/resources/js/components/FailedJobs.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -17981,7 +17981,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "src/resources/js/components/FailedJob.vue"
+Component.options.__file = "LaravelDatabaseQueueDashboard/resources/js/components/FailedJob.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -18327,7 +18327,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "src/resources/js/components/Jobs.vue"
+Component.options.__file = "LaravelDatabaseQueueDashboard/resources/js/components/Jobs.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -18563,7 +18563,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "src/resources/js/components/Job.vue"
+Component.options.__file = "LaravelDatabaseQueueDashboard/resources/js/components/Job.vue"
 
 /* hot reload */
 if (false) {(function () {

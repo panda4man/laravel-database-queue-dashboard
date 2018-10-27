@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BVAccel\DatabaseQueueDashboard\Http\Controllers\Api;
+namespace BVAccel\LaravelDatabaseQueueDashboard\Http\Controllers\Api;
 
 
-use BVAccel\DatabaseQueueDashboard\Services\JobService;
+use BVAccel\LaravelDatabaseQueueDashboard\Services\JobService;
 
 class FailedJobStatsController
 {

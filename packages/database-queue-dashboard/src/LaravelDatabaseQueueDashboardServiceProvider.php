@@ -1,17 +1,17 @@
 <?php
 
 
-namespace BVAccel\DatabaseQueueDashboard;
+namespace BVAccel\LaravelDatabaseQueueDashboard;
 
 
-use BVAccel\DatabaseQueueDashboard\Models\FailedJob;
-use BVAccel\DatabaseQueueDashboard\Models\Job;
-use BVAccel\DatabaseQueueDashboard\Services\JobService;
-use BVAccel\DatabaseQueueDashboard\Services\QueueService;
+use BVAccel\LaravelDatabaseQueueDashboard\Models\FailedJob;
+use BVAccel\LaravelDatabaseQueueDashboard\Models\Job;
+use BVAccel\LaravelDatabaseQueueDashboard\Services\JobService;
+use BVAccel\LaravelDatabaseQueueDashboard\Services\QueueService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class DatabaseQueueDashboardServiceProvider extends ServiceProvider
+class LaravelDatabaseQueueDashboardServiceProvider extends ServiceProvider
 {
     /**
      * Boot package
@@ -69,7 +69,7 @@ class DatabaseQueueDashboardServiceProvider extends ServiceProvider
      */
     private function _loadViews(): void
     {
-        $path = __DIR__ . '/resources/views';
+        $path = __DIR__ . '/../resources/views';
 
         $this->loadViewsFrom($path, 'db_queue');
         $this->publishes([$path => resource_path('views/vendor/db-queue-dashboard')], 'view');

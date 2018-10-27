@@ -1,12 +1,12 @@
 <?php
 
 
-namespace BVAccel\DatabaseQueueDashboard\Http\Controllers\Api;
+namespace BVAccel\LaravelDatabaseQueueDashboard\Http\Controllers\Api;
 
 
-use BVAccel\DatabaseQueueDashboard\Http\Resources\FailedJobCollection;
-use BVAccel\DatabaseQueueDashboard\Http\Resources\FailedJob as FailedJobResource;
-use BVAccel\DatabaseQueueDashboard\Models\FailedJob;
+use BVAccel\LaravelDatabaseQueueDashboard\Http\Resources\FailedJobCollection;
+use BVAccel\LaravelDatabaseQueueDashboard\Http\Resources\FailedJob as FailedJobResource;
+use BVAccel\LaravelDatabaseQueueDashboard\Models\FailedJob;
 use Illuminate\Routing\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
 

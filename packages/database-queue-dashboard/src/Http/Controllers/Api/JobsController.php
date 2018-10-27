@@ -1,12 +1,12 @@
 <?php
 
 
-namespace BVAccel\DatabaseQueueDashboard\Http\Controllers\Api;
+namespace BVAccel\LaravelDatabaseQueueDashboard\Http\Controllers\Api;
 
 
-use BVAccel\DatabaseQueueDashboard\Http\Resources\Job as JobResource;
-use BVAccel\DatabaseQueueDashboard\Http\Resources\JobCollection;
-use BVAccel\DatabaseQueueDashboard\Models\Job;
+use BVAccel\LaravelDatabaseQueueDashboard\Http\Resources\Job as JobResource;
+use BVAccel\LaravelDatabaseQueueDashboard\Http\Resources\JobCollection;
+use BVAccel\LaravelDatabaseQueueDashboard\Models\Job;
 use Illuminate\Routing\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
 

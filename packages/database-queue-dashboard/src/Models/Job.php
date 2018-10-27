@@ -1,6 +1,6 @@
 <?php
 
-namespace BVAccel\DatabaseQueueDashboard\Models;
+namespace BVAccel\LaravelDatabaseQueueDashboard\Models;
 
 
 use Carbon\Carbon;

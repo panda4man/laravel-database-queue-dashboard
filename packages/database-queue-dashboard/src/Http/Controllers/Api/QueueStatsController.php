@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BVAccel\DatabaseQueueDashboard\Http\Controllers\Api;
+namespace BVAccel\LaravelDatabaseQueueDashboard\Http\Controllers\Api;
 
 
-use BVAccel\DatabaseQueueDashboard\Services\QueueService;
+use BVAccel\LaravelDatabaseQueueDashboard\Services\QueueService;
 use Illuminate\Routing\Controller;
 
 class QueueStatsController extends Controller

@@ -2,7 +2,7 @@
 
 Route::group(
     [
-        'namespace' => 'BVAccel\DatabaseQueueDashboard\Http\Controllers',
+        'namespace' => 'BVAccel\LaravelDatabaseQueueDashboard\Http\Controllers',
         'middleware' => ['web']
     ],
     function () {
